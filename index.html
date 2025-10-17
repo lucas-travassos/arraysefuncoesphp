@@ -11,33 +11,43 @@
     <header class="cabecalho">
         <h1>Arrays e Funções no PHP</h1>
     </header>
-    <div class="formulario1">
-        <form action="processa.php" method="post" onsubmit="return validarFormulario()">
-            <h2>Cadastro de produtos</h2>
-            <label for="usuario">Nome de Usuário:</label><br>
-            <input type="text" id="usuario" name="usuario" placeholder="Insira o nome de usuário"><br><br>
 
-            <input type="submit" name="acao" value="Mostrar Lista">
-            <button type="submit">Enviar</button>
-            <button type="reset">Limpar</button>
-        </form>
-    </div>
+    <main>
+        <div class="container">
+            <div class="formulario1">
+                <form action="processa.php" method="post" onsubmit="return validarFormulario()">
+                    <h2>Campo do Usuário</h2>
+                    <label for="usuario">Nome de Usuário:</label><br>
+                    <input type="text" id="usuario" name="usuario" placeholder="Insira o nome de usuário"><br><br>
 
-    <div class="formulario2">
-        <form action="processa2.php" method="post" onsubmit="return validarFormulario()">    
-            <label for="produto">Nome do Produto:</label><br>
-            <input type="text" id="produto" name="produto" placeholder="Insira o nome do protudo aqui"><br><br>
-            
-            <label for="quantidade">Quantidade do Produto:</label><br>
-            <input type="text" id="quantidade" name="quantidade" placeholder="EX: 08"><br><br>
+                    <input type="submit" name="acao" value="Mostrar">
+                    <button type="submit">Enviar</button>
+                    <button type="reset">Limpar</button>
+                </form>
+            </div>
 
-            <label for="data">Data de utilização:</label><br>
-            <input type="text" id="data" name="data" placeholder="EX: XX/XX/XXXX"><br><br>
-            
-            <input type="submit" name="acao" value="Mostrar Lista">
-            <button type="submit">Enviar</button>
-            <button type="reset">Limpar</button>
-        </form>
-    </div>
+            <div class="formulario2">
+                <form action="processa2.php" method="post" onsubmit="return validarFormulario()">    
+                    <h2>Cadastro de Produto</h2>
+                    <label for="produto">Nome do Produto:</label><br>
+                    <input type="text" id="produto" name="produto" placeholder="Insira o nome do produto aqui"><br><br>
+                    
+                    <label for="quantidade">Quantidade do Produto:</label><br>
+                    <input type="text" id="quantidade" name="quantidade" placeholder="EX: 08"><br><br>
+
+                    <label for="data">Data de utilização:</label><br>
+                    <input type="text" id="data" name="data" placeholder="EX: XX/XX/XXXX"><br><br>
+                    
+                    <input type="submit" name="acao" value="Mostrar">
+                    <button type="submit">Enviar</button>
+                    <button type="reset">Limpar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>ADS2025 &copy; Todos os direitos reservados</p>
+    </footer>
 </body>
 </html>
