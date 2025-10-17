@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
-        if ($acao == "Mostrar Lista") {
+        if ($acao == "Mostrar") {
             echo "<h2>Lista de Produtos</h2>";
 
             if (count($_SESSION["itens"]) > 0) {
