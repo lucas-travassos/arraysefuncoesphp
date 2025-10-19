@@ -1,13 +1,22 @@
-function validarFormulario() {
+function validarBotaoPermitido() {//função para iniciar o php caso um dos dois botões seja selecionado
+    let botao = document.activeElement.value;
+
+    if (botao === "Mostrar" || botao === "Limpar lista") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+let regexNome = /^[A-Za-zÀ-ÿ\s]{3,}$/;
+
+function validarFormulario(){
+    
+    if (validarBotaoPermitido()) {
+        return true;
+    }
+
     let usuario = document.getElementById("usuario");
-    let produto = document.getElementById("produto");
-    let quantidade = document.getElementById("quantidade");
-    let data = document.getElementById("data");
-
-    let regexNome = /^[A-Za-zÀ-ÿ\s]{3,}$/;
-    let regexNumero = /^[0-9]+$/;
-    let regexData = /^\d{2}\/\d{2}\/\d{4}$/;
-
     if (usuario && usuario.value.trim() === "") {
         alert("Preencha o campo Nome de Usuário!");
         usuario.focus();
@@ -16,8 +25,16 @@ function validarFormulario() {
         alert("O nome de usuário deve conter apenas letras e ter pelo menos 3 caracteres.");
         usuario.focus();
         return false;
+    }    
+}
+
+function validarFormulario2() {
+    
+    if (validarBotaoPermitido()) {
+        return true;
     }
 
+    let produto = document.getElementById("produto");
     if (produto && produto.value.trim() === "") {
         alert("Preencha o campo Nome do Produto!");
         produto.focus();
@@ -28,6 +45,9 @@ function validarFormulario() {
         return false;
     }
 
+    let quantidade = document.getElementById("quantidade");
+    let regexNumero = /^[0-9]+$/;    
+
     if (quantidade && quantidade.value.trim() === "") {
         alert("Preencha o campo Quantidade!");
         quantidade.focus();
@@ -37,6 +57,9 @@ function validarFormulario() {
         quantidade.focus();
         return false;
     }
+
+    let data = document.getElementById("data");
+    let regexData = /^\d{2}\/\d{2}\/\d{4}$/;
 
     if (data && data.value.trim() === "") {
         alert("Preencha o campo Data!");
