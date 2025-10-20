@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+function exibirMensagem($texto){
+    echo "<h3>$texto</h3>";
+    echo "<a href='index.html'>Voltar</a>";
+}
+
 if (!isset($_SESSION["usuario"])) {
     $_SESSION["usuario"] = array();
 }
@@ -13,16 +18,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $usuario = trim($_POST["usuario"]);
 
-        if ($usuario != ""){
+        // if ($usuario != ""){
+           if  (!empty($usuario)) {
 
             $_SESSION["usuario"][] = array("usuario" => $usuario);
 
-            echo "<h3>Nome adicionado com sucesso!</h3>";
-            echo '<a href="index.html">Voltar</a>';
+            // echo "<h3>Nome adicionado com sucesso!</h3>";
+            // echo '<a href="index.html">Voltar</a>';
+            exibirMensagem("Nome adicionado com sucesso!");
         
         }else{
-            echo "<p>Preencha todos os campos!</p>";
-            echo '<a href="index.html">Voltar</a>';   
+            // echo "<p>Preencha todos os campos!</p>";
+            // echo '<a href="index.html">Voltar</a>';  
+            exibirMensagem("Preencha todos os campos!"); 
     }
 }
 
@@ -47,8 +55,9 @@ echo '<a href="index.html">Voltar</a>';
 
 if ($acao == "Limpar lista") { 
 $_SESSION["usuario"] = array(); 
-echo "<h3>Lista apagada!</h3>";
-echo '<a href="index.html">Voltar</a>';
+// echo "<h3>Lista apagada!</h3>";
+// echo '<a href="index.html">Voltar</a>';
+exibirMensagem("Lista apagada!");
 }
 }
 ?>
