@@ -2,6 +2,10 @@
 //inicia sessão que possibilita guardar dados a cada requisição;
 session_start(); 
 
+function exibirMensagem($texto){
+    echo "<h3>$texto</h3>";
+    echo "<a href='index.html'>Voltar</a>";
+}
 //retorna verdadeiro caso a variável $_SESSION["itens"] ainda não exista (primeiro acesso do usuário);
 if (!isset($_SESSION["itens"])) { 
     //cria o array. Se for falso, executa o restante do código sem alterar o array vigente;
@@ -18,7 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //validação de segurança, só exe
         $data = trim($_POST["data"]);
 
         // Verifica se todos os campos obrigatórios foram preenchidos.
-        if ($produto != "" && $quantidade != "" && $data != "") {
+        // if ($produto != "" && $quantidade != "" && $data != "") {
+        if (!empty($produto) && !empty($quantidade) && !empty($data)) {
             // Adiciona os dados do produto ao array de sessão "itens".
             // Cada item é um array associativo com as chaves: produto, quantidade e data.
             $_SESSION["itens"][] = array(
@@ -26,13 +31,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //validação de segurança, só exe
                 "quantidade" => $quantidade,
                 "data" => $data);
                 // Mensagem de confirmação e link para voltar à página inicial.
-                echo "<h3>Produto adicionado com sucesso!</h3>";
-                echo '<a href="index.html">Voltar</a>';
+                // echo "<h3>Produto adicionado com sucesso!</h3>";
+                // echo '<a href="index.html">Voltar</a>';
+                exiberMensagem("Produto adicionado com sucesso!");
 
             } else {
                 // Caso algum campo esteja vazio, exibe mensagem de erro e link para voltar.
-                echo "<p>Preencha todos os campos!</p>";
-                echo '<a href="index.html">Voltar</a>';
+                // echo "<p>Preencha todos os campos!</p>";
+                // echo '<a href="index.html">Voltar</a>';
+                exibirMensagem("Preencha todos os campos!");
+                
             }
         }
 
@@ -59,8 +67,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //validação de segurança, só exe
 
     if ($acao2 == "Limpar lista") { // Se o botão clicado tiver valor "Limpar lista", entra neste bloco.
         $_SESSION["itens"] = array(); // Redefine o array da sessão como vazio, apagando todos os produtos.
-        echo "<h3>Lista apagada!</h3>";
-        echo '<a href="index.html">Voltar</a>';
+        // echo "<h3>Lista apagada!</h3>";
+        // echo '<a href="index.html">Voltar</a>';
+        exibirMensagem("Lista apagada!");
     }
 }
 ?>
