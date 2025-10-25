@@ -14,37 +14,132 @@
 
     <main>
         <div class="container">
-            <div class="formulario1">
-                <form action="processa.php" method="post" onsubmit="return validarFormulario()">
-                    <h2>Campo do Usuário</h2>
-                    <label for="usuario">Nome de Usuário:</label><br>
-                    <input type="text" id="usuario" name="usuario" placeholder="Insira o nome de usuário"><br><br>
 
-                    <input type="submit" name="acao" value="Mostrar">
-                    <button type="submit" name="acao" value="Enviar">Enviar</button>
-                    <button type="submit" name="acao" value="Limpar lista">Limpar</button>  
+            <div class="formulario1">
+                <form action="processa1.php" method="post">
+                    <h2>Array Unidimensional</h2>
+                    <textarea cols="70" rows="8">
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $posicao = $_POST['posicao'];
+    $frutas = array("Maçã", "Banana", "Laranja", "Uva");
+    echo "<h2>A fruta selecionada foi $frutas[$posicao]</h2>";
+}
+?>
+                    </textarea>
+                    <label for="numero">Digite a posição do vetor:</label>
+                    <input type="text" name="posicao" id="posicao">
+
+                    <button type="submit">Mostrar</button>
                 </form>
             </div>
 
             <div class="formulario2">
-                <form action="processa2.php" method="post" onsubmit="return validarFormulario2()">    
-                    <h2>Cadastro de Produto</h2>
-                    <label for="produto">Nome do Produto:</label><br>
-                    <input type="text" id="produto" name="produto" placeholder="Insira o nome do produto aqui"><br><br>
-                    
-                    <label for="quantidade">Quantidade do Produto:</label><br>
-                    <input type="text" id="quantidade" name="quantidade" placeholder="EX: 08"><br><br>
+                <form action="processa2.php" method="post">
+                    <h2>Array Multidimensional</h2>
+                    <textarea cols="70">
+<?php
+function voltar(){
+    echo "<h2><a href='index.html'>Página Inicial</a></h2>";
+}
+if($_SERVER["REQUEST_METHOD"] === "POST"){
+    $linha = intval($_POST["num1"]);  // quantas linhas mostrar
+    $alunos = array(
+        array("João", 18, "Informática"),
+        array("Maria", 19, "Administração"),
+        array("Pedro", 20, "Contabilidade")
+    );
+    // Percorre as linhas e colunas conforme solicitado
+    for ($j = 0; $j <= 2; $j++) {
+        echo "<h2>" . $alunos[$linha][$j] . "</h2>";       
+        echo "<br>";
+    }
+    voltar();
+}
+?>
 
-                    <label for="data">Data de utilização:</label><br>
-                    <input type="text" id="data" name="data" placeholder="EX: XX/XX/XXXX"><br><br>
+                    </textarea><br>
+                    <label for="num1">Digite o número da linha do array:</label><br>
+                    <input type="text" id="num1" name="num1"><br><br>
+
+                    <button type="submit">Mostrar</button>
+                </form>
+            </div>
+
+            <div class="formulario3">
+                <form action="processa3.php" method="post">    
+                    <h2>Funções personalizadas</h2>
+
+                    <textarea cols="70">
+<?php
+function voltar(){
+    echo "<h2><a href='index.html'>Página Inicial</a></h2>";
+}
+if($_SERVER["REQUEST_METHOD"] === "POST"){
+    $numero1 = $_POST["numero1"];
+    $numero2 = $_POST["numero2"];
+    function soma($num1, $num2) {
+        $resultado = $num1 + $num2;
+        echo "<h2>A soma de $num1 e $num2 é: $resultado</h2><br>";
+    }
+    soma($numero1, $numero2);
+    voltar();
+}
+?>
+
+                    </textarea>
+
+                    <label for="numero1">Número 1:</label><br>
+                    <input type="text" id="numero1" name="numero1"><br><br>
                     
-                    <input type="submit" name="acao2" value="Mostrar">
-                    <button type="submit" name="acao2" value="Enviar">Enviar</button>
-                    <button type="submit" name="acao2" value="Limpar lista">Limpar</button>  
+                    <label for="numero2">Número 2:</label><br>
+                    <input type="text" id="numero2" name="numero2"><br><br>
+                    
+                    <button type="submit">Mostrar</button>
+                </form>
+            </div>
+
+
+            <div class="formulario4">
+                <form action="processa4.php" method="post">    
+                    <h2>Funções nativas</h2>
+
+                    <textarea cols="70">
+<?php
+function voltar(){
+echo "<h2><a href='index.html'>Página Inicial</a></h2>";
+}
+if($_SERVER["REQUEST_METHOD"] === "POST"){
+    $nome = $_POST["nome"];
+    $idade = $_POST["idade"];
+    //Se o usuário digitar "Maria " a saída será "Maria" (sem espaço)
+    echo trim("Nome: " . $nome . "<br>"); 
+    //Empty serve para validar um campo vazio
+    if(empty($idade)){
+        echo "Digite sua idade.<br>";
+    } else {
+        echo "Idade: " . $idade . "<br>";
+    }
+    if(!isset($funcao)){
+        echo "Variável não definida.<br>";
+    }
+    voltar();
+}
+?>
+                    </textarea>
+
+                    <label for="nome">Nome:</label><br>
+                    <input type="text" id="nome" name="nome"><br><br>
+                    
+                    <label for="idade">Idade:</label><br>
+                    <input type="text" id="idade" name="idade"><br><br>
+                    
+                    <button type="submit">Mostrar</button>
                 </form>
             </div>
         </div>
     </main>
+
 
     <footer>
         <p>ADS2025 &copy; Sistema de Produtos
